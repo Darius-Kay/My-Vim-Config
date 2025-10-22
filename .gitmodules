@@ -1,0 +1,3 @@
+[submodule "fuzzbox"]
+	path = bundle/fuzzyy
+	url = https://github.com/vim-fuzzbox/fuzzbox.vim
