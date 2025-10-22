@@ -1,0 +1,61 @@
+vim9script
+
+
+#Infection de Supravim....
+import autoload 'supraload.vim' as SupraLoad
+SupraLoad.Infect()
+
+#Colors 
+if (has("termguicolors"))
+	set termguicolors
+endif
+
+#plugin config
+g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'python': ['flake8'],
+\   'go': ['go', 'golint', 'errcheck']
+\}
+g:ale_set_highlights = 0
+filetype on
+filetype plugin on
+filetype indent on
+
+#config
+syntax on
+colorscheme evening
+set colorcolumn=81
+set title
+set wildmenu
+set number
+set relativenumber
+set tabstop=4
+set shiftwidth=4
+set autoindent
+set smartindent
+set shiftround
+set showmode
+set backspace=indent,eol,start
+set pumheight=50
+set notimeout
+set ttimeout
+set timeoutlen=100
+set encoding=utf-8
+set splitbelow
+set splitright
+set noautochdir
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+set fillchars=vert:│
+auto BufEnter,VimEnter *.tpp set filetype=cpp
+autocmd BufNewFile *.c,*.h :Stdheader
+
+#Color Modif on Evening
+hi Normal guibg=#4d4d4d
+
+#Mapping
+g:mapleader = "\<space>"
+nnoremap <leader>s	:Snake<CR>
+nnoremap <leader>f	:FuzzyGrep<CR>
+nnoremap <leader>e	:FuzzyFiles<CR>
+nnoremap <leader>r	:FuzzyMruRoot<CR>
+nnoremap <leader>w	:FuzzyGrep <C-R><C-W><CR>
